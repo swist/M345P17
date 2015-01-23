@@ -1,0 +1,400 @@
+\documentclass[amsfonts]{amsart}
+
+\usepackage{amssymb,amsfonts}
+\usepackage[all,arc]{xy}
+\usepackage{enumerate}
+\usepackage{mathrsfs}
+
+
+%theoremstyle{plain} --- default
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{quest}[thm]{Question}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+
+\makeatletter
+\let\c@equation\c@thm
+\makeatother
+\numberwithin{equation}{section}
+
+\bibliographystyle{plain}
+
+%--------Meta Data: Fill in your info------
+\title{M3/4 P55 Algebraic combinatorics}
+
+
+
+\date{DEADLINE AUGUST 26, 2011}
+
+\begin{document}
+
+\begin{abstract}
+\end{abstract}
+
+\maketitle
+
+\tableofcontents
+
+\section{What does the table of contents command do?}
+
+\subsection{Check matrix}
+
+\begin{defn}
+Suppose \(A\) is a \(m \times n\) matrix over \(\mathbb{Z}_2\) and:
+\begin{equation*}
+C = \{ x \in \mathbb{Z}_2^n : Ax = 0\}
+We call A a check matrix of the linear code C
+\end{equation*}
+\end{defn}
+
+\begin{prop}
+Suppose the check matrix \(A\) of a linear code \(C\) satisfies
+
+\begin{enumerate}
+	\item \(A\) has no zero column
+	\item \(A\) has no two equal columns
+\end{enumerate}
+Then \(C\) corrects 1 error.
+\end{prop}
+
+\begin{proof}
+Suppose false. Then \(d(C) \leq 2\) by proposition 1.2.
+Hence by propsoition 1.5 \(\exists 0\neq \in C\) s.t \(wt(C) = 1 || 2\)
+
+Suppose \(wt(c) = 1\). Then \(c = l_i \space(=0 ... 1 ...)\) and 
+
+\(A_C = 0 \implies Al_i = 0 \ implies ith col of A = 0\) Contradiction
+
+Suppose \(wt(c) = 2 \) then \(c = l_i + l_j\) so 
+\(Ac = 0 \implies Al_u + Al_j = 0 \implies ith col of A = jth col of A\) contradiction
+\end{proof}
+
+Examples
+
+\begin{enumerate}
+\item 
+\[C_3 = \{
+	x \in \mathbb{Z}_2^6 : \begin{bmatrix}
+	1 & 1 & 0 & 1 & 0 & 0 \\
+	0 & 1 & 1 & 0 & 0 & 0 \\
+	1 & 0 & 1 & 0 & 0 & 1
+	\end{bmatrix}x = 0
+\}\]
+Corrects 1 error by 1.6
+
+\item Suppose we want a code \(C\) which corrects 1 error and has \(3 \times n\) check matrix for some n. What is max dim of \(C\)?
+Answer:
+By 1.6 need to find largest n s.t. \(\exists 3 \times n \) check matrix with distinct non zero cols (in\(\mathbb{Z}_2^3\)). Such a matrix will have as cols all non zero vectors in \(\mathbb{Z}_2^3\) of which there a re 7, eg:
+
+\[
+A = \begin{bmatrix}
+	1 & 1 & 1 & 0 & 1 & 0 & 0 \\
+	1 & 1 & 0 & 1 & 0 & 1 & 0 \\
+	1 & 0 & 1 & 1 & 0 & 0 & 1
+	\end{bmatrix}
+\]
+
+this is a \(3\times 7\) so in check matrix of code \(C\) of length 7 dim 4 (by rank nullity) correcting 1 error.
+
+This sends 16 messages abcd using codewords abcdxyz where 
+\[
+	x = a + b + c,\\
+	y = a +b + d \\
+	z = a + c + d
+\]
+This is called a Hamming code \(\text{Ham}(3)\)
+
+\end{enumerate}
+\subsection{Correcting an error}
+Suppose a codeword \(c\) is sent and 1 error is made, so that received vector is \(c'\) which is not necessarily a code. How do we correct the error?
+
+Well, $c' = c + l_i$ for some $i$
+So
+
+\begin{align}
+	Ac' = A(c+l_i) \\
+		= Ac + Al_i \\
+		= Al_i \\
+		= i^\text{th} \text{col of} A
+\end{align}
+
+E.g. Let $C = \text{Ham}(3)$.
+Suppose received vector is $c= (1101000)^T$.
+
+Then \[
+	Ac' = \begin{pmatrix}0\\1\\0\end{pmatrix} = 6^\text{th} \text{column of }A
+\]
+
+\subsection{Hamming Codes}
+
+\begin{defn}
+Let $k\geq3$ A Hamming Code Ham$(k)$ is a code fo which the check matrix has as columns all the distinct non zero vectors in $\mathbb{Z}_2^k$
+\end{defn}
+
+
+\begin{prop}
+\begin{enumerate}
+	\item Ham$(k)$ has length $2^k-1$, dim $2^k-1 - k$
+	\item Ham$(k)$ corrects 1 error
+\end{enumerate}
+\end{prop}
+\begin{proof}
+	\par
+	\begin{enumerate}
+	\item\par
+		Since there are $2^k-1$ non zero vectors in $\mathbb{Z}_2^k$ check matrix of Ham$(k)$ is $k\times (2^k-1)$ and rank $k$
+	\item\par
+		Follows from 1.6 
+	\end{enumerate}
+\end{proof}
+
+\begin{defn}
+Let $C, C' \subseteq \mathbb{Z}_2^n$. Say $C$ and $C'$ are equivalent codes if there is a permutation of the coordinates sending codewords in $C$ bijectively to codewords in $C'$. (This is equivalent to permuting the columns of the checkmatrices)
+\end{defn}
+
+E.g all Hamming codes ham$(k)$ are equivalent.
+
+We want codes that correct more than one error though. Ideally we would like to have a matrix condition that corrects lots of errors - we would like to generalize definition 1.6
+
+\begin{prop}
+Let $d \geq 2$ and let $C$ be a code wit hcheck matrix $A$. 
+\begin{enumerate}
+	\item\par Suppose every set of $d-1$ columns of $A$ is linearly independent. If that is true, then the minimum distance $d(C) \geq d$
+	\item\par Suppose in addition to (1) that $\exists$ a set of $d$ columns of $A$ that are linerarly dependent. then $d(C) = d$
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+	\item\par Suppose false, and $d(C) \leq d-1$. Then $\exists 0 \neq c \in C$ with $wt(c) = r \leq d-1$. Write $c$ as a sum of standard basis vectors: 
+	\[
+		c = e_{i_1} + ... + e{i_r}
+	\]
+
+	So \[
+		0 = Ac = Ae_{i_1} + ... + Ae{i_r} 
+	\]
+	\[
+		= \text{col}i_1 + ... + \text{col}i_r
+	\]
+
+	This is a contradiction, since by the hypothesis of (1) any set of $r \leq d-1$ columns is linearly independent.
+
+	\item\par 
+	Suppose columns $i_1 ... i_d$ are linearly dependent, say
+
+	\[
+		\lambda_1 (\text{col})i_1 + ... \lambda_d(\text{col})i_d = 0, \lambda_i \in \mathbb{Z}_2
+	\]
+
+	As by (1) any $d-1$ columns are linearly independent, all of $\lambda_i = 1 \forall i$. Then 
+
+	\[
+		0 = \text{col}i_1 + ... \text{col}i_d
+	\]
+
+	\[
+		= A(e{i_1} + ... e{i_d})
+	\]
+
+	Then $c = e{i_1} + .. + e{i_d} \in C$ and $wt(c) = d$
+\end{enumerate}
+\end{proof}
+
+E.g
+
+	Find a linear code of length 9 dimension 2 which corrects 2 errors.
+	Answer:
+	Check matrix $A$ should be a $7 \times 9$ matrix (of rank 7). 
+	Also need code $C = \{x \in \mathbb{Z}_2^9: Ax = 0\}$ to have $d(C)\geq 5$ so by 1.8 want every set of 4 columns of $A$ to be linearly independent.
+
+	Take
+	\begin{equation*}
+		A = \begin{bmatrix}
+			\begin{matrix}
+			| & | & \\
+			\end{matrix}
+
+			\begin{matrix}
+			1 & \cdots & 0 \\
+			  & \ddots & \\
+			0 & \cdots & 1
+			\end{matrix}
+			\end{bmatrix}
+	\end{equation*}
+
+	Consisting of an $7 \times 7$ identity matrix and 2 columns $c_1, c_2$
+
+	Need:
+	\begin{enumerate}
+		\item $wt(c_1)\geq 4, wt(c_2)\geq 4$ (otherwise $c_i$ and less than 3 columns of $I_7$ would be linearly dependent)
+		\item $wt(c_1+ c_2) \geq 3$ (otherwise $c_1, c_2$ and $\leq 2$ columns of $I_7$ would be linearly dependent)	
+	\end{enumerate}
+	so take 
+
+	\begin{equation*}
+		A = \begin{bmatrix}
+			1 & 0 \\
+			1 & 0 \\
+			1 & 0 \\
+			1 & 1 & I_7 \\
+			0 & 1 \\
+			0 & 1 \\
+			0 & 1 
+
+			\end{bmatrix}
+	\end{equation*}
+
+	This defines the code
+	\begin{align*}
+		C &= \{ a b a a a (a +b)  b b b \qquad: \qquad a,b \in \mathbb{Z}_2 \} \\
+		  &= \{0^9, 101111000, 0100001111, 111110111\}
+	\end{align*}
+
+\subsection{Hamming bounds}
+
+Suppose a code $C$ has length $n$ and corrects $e$ errors. How big can $|C|$ be?\\
+
+Recall: 
+\begin{align*}
+	\text{for} v &\in \mathbb{Z}_2^n \\
+		S_2(v) &= \{x \in \mathbb{Z}_2^n: d(x,v)\leq e\}
+\end{align*}
+
+\begin{prop}[1.9]
+	$|S_e(v)| = $ sum of binomial coefficients %write this properly
+\end{prop}
+
+\begin{proof}
+	Let:
+	\begin{align*}
+		d_i &= \text{no of: } x\in \mathbb{Z}_2^n \\
+			&\text{s.t } d(v,x) = i
+	\end{align*}
+	Then:
+	\[ |S_e(v)| = d_i + d_1 + ... + d+e\]
+	The vectors at distance $i$ from $v$ are those vector differeing form $v$ in $i$ cooridinates of which there are: ${n \choose i}$ so $d_i = {n \choose i}$
+\end{proof}
+
+\begin{thm}[1.10, Hamming Bound]
+	Let $C$ be a code of length $n$, correcting $e$ errors. \newline
+	Then \[ |C| \leq \frac{2^n}{1 + n + {n \choose 2} + ... + {n \choose e}}\]
+\end{thm}
+
+\begin{proof}
+	As $C$ corrects $e$ errors, the sphere $S_e(c)$ for $c \in C$ are all disjoint. Hence: \newline
+	\begin{align*}
+		| \bigcup_{c\in C} S_e(c)| &= |C| | S_e(c)| \\
+									&= |C| (1 + n + .. + {n \choose e}) 
+	\end{align*}
+
+	Since $\bigcup_{c \in c} S_e(c) \subseteq \mathbb{Z}_2^n$, this gives \newline
+	$|C| (1 + n + ... + {n \choose e}) \leq 2^n$
+\end{proof}
+
+Eg. Let $C$ be a linear code of length 9 correcting 2 errors. What is the maximum dimension of $C$?
+
+Ans. By hamming bound: \newline
+	$|C| \leq \frac{2^9}{1+9+{9 \choose 2}}= 2^9/46 < 2^4$
+	Hense $dim(C) \leq 3$.
+	We found such a $C$ of dim 2.
+
+	is there one of dim 3?
+
+	To find one we need a $6 \times 9$ check matrix with any 4 cols independent. \newline
+	Taking \[
+		A = \begin{bmatrix}
+			c_1 & c_2 & c_3 \\
+			| & | & | & I_6
+
+		\end{bmatrix}
+	\]
+
+	need $c_1, c_2, c_3 \in \mathbb{Z}_2^6$ to satisfy: \newline
+
+	\begin{enumerate}
+		\item $wt(c_i)\geq 4 \qquad \forall i$
+		\item $wt(c_i + c_j) \geq 3 \qquad \forall i\neq j$
+		\item $wt(c_1 + c_2 + c+3) \geq 2$
+	\end{enumerate}
+
+	Do $\exists$ such $c_1, c_2, c_3 \in \mathbb{Z}_2^6$?
+
+	Answer: No, see problem sheet 2
+
+\subsection{Perfect Codes}
+\begin{defn}
+	A code $C \subseteq \mathbb{Z}_2^n$ is  \em{e-perfect} if $C$ corrects $e$ errors and \newline
+	\[
+	|C| = \frac{2^n}{1 + n + .. + {n \choose e}}
+	\]
+
+	Equivalently, the union of all the (disjoint) spheres $S_e(c)\qquad (c\in C)$ is the whole of $\mathbb{Z}_2^n$.
+\end{defn}
+
+1-perfect codes
+
+\begin{prop}[1.11]
+	Let $C \subseteq \mathbb{Z}_2^n$. Then \newline
+	\[
+		|C| = \frac{2^n}{1+n} \iff n=2^k-1, |C| = 2^n-k 
+	\]
+	for some $k$
+\end{prop}
+
+\begin{proof}
+	
+	$\Rightarrow$ \newline
+	If $|C| = \frac{2^n}{1+n}$ then $1 +n = 2^k$ for some $k$ \newline
+	$\Leftarrow$ Clear
+\end{proof}
+
+Recall that Hamming code Ham$(k)$ has length $n= 2^k-1$, dimension $n-k$ and corrects 1 error. Hence: \newline
+
+\begin{prop}[1.12]
+	Ham$(k)$ is a 1-perfect code.
+\end{prop}
+
+Are there any \emph{e-perfect} codes for $e\geq2$
+
+E.g.\newline
+For $e=2$, we need $1+n + {n \choose 2} = 2^k$ for some integer $k$ \newline
+This is quite rare, but does happen. (ask the number theory nerds)
+\par
+Famous theorem (van-Lint, Tietraven, 1964)
+
+\begin{thm}
+The only \emph{e-perfect} codes are:
+	\begin{enumerate}
+		\item $e=1$, Ham$(k)$
+		\item $n=2e+1\qquad C=\{0 ... 0, 1 ... 1\}$ of dim 1
+		\item $e=3, n=23, \text{dim}C = 12$, the \em{Golay code}
+	\end{enumerate}
+
+\end{thm}
+Miraculous arithmetic:\newline
+\[
+	1 + 23 + {23 \choose 2} + {23 \choose 3} = 2^{11}
+\]
+
+\end{document}
+
