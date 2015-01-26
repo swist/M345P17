@@ -31,6 +31,9 @@
 \newtheorem{warn}[thm]{Warning}
 \newtheorem{sch}[thm]{Scholium}
 
+
+
+
 \makeatletter
 \let\c@equation\c@thm
 \makeatother
@@ -356,7 +359,7 @@ Ans. By hamming bound: \newline
 \begin{prop}[1.11]
 	Let $C \subseteq \mathbb{Z}_2^n$. Then \newline
 	\[
-		|C| = \frac{2^n}{1+n} \iff n=2^k-1, |C| = 2^n-k 
+		|C| = \frac{2^n}{1+n} \iff n=2^k-1, |C| =26 2^n-k 
 	\]
 	for some $k$
 \end{prop}
@@ -395,6 +398,131 @@ Miraculous arithmetic:\newline
 \[
 	1 + 23 + {23 \choose 2} + {23 \choose 3} = 2^{11}
 \]
+
+%26.1.2015
+Hamming bound is a result for non existence of codes $C$ of length $n$, correcting $e$ errors.
+
+This time we will concern ourselves with an existence result
+
+
+Gilbert-Varshamov bound
+
+\begin{exmp}
+Let $C$ be a linear code of length $15$, correcting $2$ errors. What is the maximum dimension of $C$?
+
+Ans:
+
+Hamming bound gives
+
+\[
+	|C| \leq \frac{2^15}{1+15 +{15 \choose 2}} = \frac{2^15}{|2|} < 2^9
+\]
+Hence $dimC \leq 8$
+
+More on this later.
+\end{exmp}
+
+\begin{thm}[G-V bound][1.12]
+Let $n,k, d$ be positive integers such that
+
+\[
+	1 + n-1 + {n-1 \choose 2} ... + {n-1 \choose d-2} < 2^{n-k}
+\]
+
+Then there exists a linear code of length $n$, dimension $k$ with $d(C) \geq d$
+\end{thm}
+
+Eg. take $n=15, d=5$
+
+\[
+	1 + 14 + {14 \choose 2} + {14 \choose 3}  = 1 + 14 + 91 + 364 < 512 = 2^9 = 2^{15-6}
+\]
+
+So G-V bound tells us that such code $C$ of dim $6$ exists.
+
+There may or may nto exist such codes of dim 7 or 8.
+Sadly neither Hamming bound or G-V bound give us anything about the answer to this.
+
+
+\begin{proof}
+	Assume the G-V bound equation. We want to construct a check matrix $A$ such that:\tabularnewline
+	\begin{enumerate}
+		\item $A$ is $(n-k) \times n$ (of rank $n-k$)
+		\item any $d-1$ columns of $A$ are linearly independent
+	\end{enumerate}
+	We construct such a matrix inductively, column by column.
+
+	Start by choosing the first $n-k$ columns:
+	\[
+		\begin{bmatrix}
+		e_1 ... e_{n-k}\\
+		\end{bmatrix}
+	\]
+
+	(inductive step)
+	Suppose we've chosen $i$ columns $c_1, ..., c_i \in \mathbb{Z}_2^{n-k}$ \tabularnewline
+	Where $n-k \leq i \leq n-1$ s.t any $d-1$ columns from $c_1 ... c_i$ are linearly independent. \tabularnewline
+	Then:
+	\[
+		A_i = (c_1, ... , c_i)
+	\]
+
+	is $(n-k)*i$ and satisfies (2)
+
+	For the inductive step we need to choose a further column $c_{i+1}$ so that $A_{i+1} = (c_1, ..., c_i, c_{i+1})$ still satisfies 2
+
+	%But since $n-k \leq i$	we can choose a column that is not in the span of the first i columns.
+	How many ``bad'' vectors are there - vectors in $\mathbb{Z}_2^{n-k}$ which are the sum of $\leq d-2$ fo the vectors from $c_1, ... , c_i$
+
+	There are at most $1 + i  + {i \choose 2} + {i \choose 3} ... + {i \choose d-2}$ such vectors.
+
+	But since $i$ is at most $n-1$, this is less than $2^n-k$ by the G-V bound. So therefore there is a vector in $\mathbb{Z}_2^{n-k}$ that is not a sum of $\leq d-2$ of the vectors $c_1, ..., c_i$. Hence the matrix
+
+	\[
+		A_{i+1} = (c_1, ..., c_i, c_{i+1})
+	\]
+	satisfies property (2)
+
+	By this inductive step we construct $A_i$ for $i = n-k, ..., n$. The matrix $A = A_n$ is the required check matrix.	
+\end{proof}
+
+\subsection{The Golay Code}
+This is a 3-perfect code of length $23$, dimension $12$
+
+To construct it we first construct the \emph{extended} Golay code $G_24$
+Start with $H = Ham(3)$, check matrix:
+
+\[
+	\begin{bmatrix}
+	1 & 1 & 1 & 0 & 1 & 0 & 0  \\
+	1 & 1 & 0 & 1 & 0 & 1 & 0  \\
+	1 & 0 & 1 & 1 & 0 & 0 & 1
+	\end{bmatrix}
+\]
+
+And its reverse K, with check matrix
+
+\[
+	\begin{bmatrix}
+	0 & 0 & 1 & 0 & 1 & 1 & 1\\
+	0 & 1 & 0 & 1 & 0 & 1 & 1\\
+	1 & 0 & 0 & 1 & 1 & 0 & 1
+	\end{bmatrix}
+\]
+
+Add a parity check bit (= sum of bits) to $H, K$ to get length 8 codes $H', K'$
+% list hamming H' and K' codewords here
+
+
+Note.1 $H', K'$ are linear codes of length 8 dim 4.
+Note.2 All codewords are have weight 0, 8 or 4.
+
+Taking the 14 codewords of weight 4 in $H'$ you'll see that you can define a collection of blocks, forming a 3-design. ($v=8$ points, $k=4$ (size of block))
+
+\begin{prop}[1.13]
+$H \cap K = \{0^7, 1^7\} \qquad \&  \qquad H'\cap K' = \{0^8, 1^8 \}$
+\end{prop}
+
 
 \end{document}
 
