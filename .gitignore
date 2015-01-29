@@ -1,8 +1,8 @@
 M4P55.sublime-project
 M4P55.sublime-workspace
-notes.aux
-notes.fdb_latexmk
-notes.fls
-notes.log
-notes.synctex.gz
-notes.toc
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.toc
