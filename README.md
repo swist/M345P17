@@ -1,2 +1,4 @@
-# M345P55
-M345P55 Commutative Algebra, Imperial College London 2015
+# M345P17
+Algebraic Combinatorics Lecture Notes, Imperial College London Spring 2015
+
+Feel free to commit/add/change stuff, I will try to keep it up to date as course goes along
