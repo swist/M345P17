@@ -4,6 +4,12 @@
 \usepackage[all,arc]{xy}
 \usepackage{enumerate}
 \usepackage{mathrsfs}
+\usepackage{extarrows}
+\usepackage{mathtools}
+\usepackage{tikz}
+
+\usetikzlibrary{graphs}
+\usetikzlibrary{graphs.standard}
 \input{mathsymbols.sty}
 
 %theoremstyle{plain} --- default
@@ -522,6 +528,256 @@ Taking the 14 codewords of weight 4 in $H'$ you'll see that you can define a col
 \begin{prop}[1.13]
 $H \cap K = \{0^7, 1^7\} \qquad \&  \qquad H'\cap K' = \{0^8, 1^8 \}$
 \end{prop}
+
+\begin{proof}
+Let $v\in H\cap K$
+
+\begin{align*}
+	H &= \begin{pmatrix}
+		1 & 1 & 1 & 0 & 1 & 0 & 0 \\
+		1 & 1 & 0 & 1 & 0 & 1 & 0 \\
+		1 & 0 & 1 & 1 & 0 & 0 & 1 \\
+	\end{pmatrix} \\
+	v \in H & \qquad \Rightarrow \qquad v = abcd, a+b+c, a+b+d, a+c+d\\
+\end{align*}
+\begin{align*}
+\text{So} \qquad v \in K \quad\Rightarrow\quad \\
+	c + (a+b+c) + (a+b+d) + (a+c+d) = 0 &\quad\rightarrow\quad a +c = 0\\
+	b + d + (a + b + d) + (a + c +d)= 0 &\quad\rightarrow\quad c + d = 0 \Rightarrow a = b = c = d \\
+	a + d + (a + b + c) + (a + c +d)= 0 &\quad\rightarrow\quad a + b = 0 \Rightarrow v = 0^7\quad\text{or}\quad 1^7
+\end{align*}
+\end{proof}
+
+\subsection{Solutions to sheet 1}
+\begin{proof}[3a]
+	$C = \{v \in \ZZb^n : wt(v) \text{even} \}$
+	Check matrix $(1\; 1\;...\; 1)$
+	\begin{align*}
+		\text{Then}\quad	 C &= \{v \in \ZZb^n : (1\;1\;...\;1)v = 0\}\\
+					  &= (v_1\;...\;v_m)^T
+	\end{align*}
+\end{proof}
+
+\begin{proof}[7]\hfill\newline
+	$T(n):$ vertices = paris from $\{1\;...\;n\}$\newline
+	join $A, B$ if $A\cap N \neq \emptyset$\newline
+	\begin{tikzpicture}[every node/.style={draw,circle,very thick}]
+	  \graph[clockwise, radius=2cm] {subgraph C_n [n=5,name=A]};
+	  \graph[clockwise, radius=1cm] {subgraph I_n [n=5,name=B]};
+
+	  \foreach \i in {1,2,3,4,5}{\draw (A \i) -- (B \i);}
+	  \newcounter{j}
+	  \foreach \i in {1,2,3,4,5}{%
+	  \pgfmathsetcounter{j}{ifthenelse(mod(\i+2,5),mod(\i+2,5),5)}
+	  \draw (B \i) -- (B \thej);
+	  }
+	  %fix labels here (12) 34 15 23 45 // 35 25 24 14 13
+
+	\end{tikzpicture}
+	$T(n)$ is strongly regular.
+	\begin{enumerate}
+		\item \par
+			$ij$ joined to all pairs in $\{1,\;...,\;n\}\setminus ij $\newline
+			regular of valency = ${n-2 \choose 2}$
+		\item \par
+			no. of common neighbours of $ij $ 2-joined vertices $, kl = {n-4 \choose 2}$
+			%draw pic
+		\item \par no. of common neighborus of 2 non-joined veritces is ${n-3 \choose 2}$
+			%draw pic
+	\end{enumerate}
+\end{proof}
+\begin{proof}[6]
+	Steiner triple sistem is a 2-design with $k=3$, any 2 points in one block. \newline
+	Set $X$ of $v$ points. Collection $B$ of blocks of size $3$. Any point is in $v$ blocks. Any 2 points in one block.\\
+	a)\hfill \\
+		$X = \ZZb^n \setminus 0$ \\
+		Blocks $=$ subsets $\{x,y, x+y\} \qquad (x\neq y \in x)$ \\
+		This is a STS:
+			\begin{enumerate}
+				\item \hfill \\
+				Let, $x,y$ be 2 pioints. The lie in the block $\{x,y x+y\}$\\
+				If the lie in a block $\{v,w, v+w\}$ then:\\
+				\[
+				x,y = \begin{matrix}
+						v, w \\
+						v, v+w \\
+						w, v+w \\
+					  \end{matrix}
+				\]
+				and in each case $\{v,w, v+w\} = \{x,y x+y\} $ so $x,y$ lie in exactly 1 block. Note $|X| = 2^n -1 $
+				\item \hfill \\
+				Let $x \in X$. The no of blocks containing $x\qquad \{x,y, x+y\}$.\\ 
+				This no is $\frac{2^n-2}{2} = 2^{n-1}-1 = r$
+			\end{enumerate}
+	b)\hfill \\
+	STS, $|X| = v$. Count pairs $(xy, B)$ with $x,y \in B$.\\
+	\begin{align*}
+		\text{No. of pairs} \quad &= \quad (\text{no of choices xy})\times 1 \\
+								  &= {v \choose 2}\\
+	\end{align*}
+
+	\begin{align}[rabbit]
+	\text{this no is}\\
+	(\text{No. of B's}) \times {3 \ choose 2} = 3b \\
+	\text{So:}\quad {v \choose 2} = 3b \Rightarrow v(v-1) = 6b\\
+	\end{align}
+	Hence $b | v(v-1)$ Also 
+	\begin{align*}
+		b= \frac{vr}{k} = \frac{vr}{3} \Rightarrow \frac{v(v-1)}{6} = \frac{vr}{3}\Rightarrow r = \frac{v-1}{2}
+	\end{align*}
+	So $v$ is odd\\
+	c)\hfill \\
+	Let $v\leq 12. 6| v(v-1)$ and $v$ odd.
+	Then $v = 3, 7 \;\text{or}\; 9$\\
+	$v = 3$: Trivial STS.\\
+	$v = 7$: There is one by previous part $\ZZb^3\setminus 0$ STS.\\
+	$v = 9$: Yes. \hfill \\
+	Points $\{0,\;1,\;...\;\}8$. \\
+	Let: 
+	\begin{align*}
+	A = \begin{pmatrix}
+			0 & 3 & 6 \\
+			1 & 4 & 7 \\
+			2 & 5 & 8 \\
+		\end{pmatrix}
+	\end{align*}
+	Take as blocks of size 3:
+	\begin{description}
+		\item[Rows of ATu]
+		$036, \quad 147,\quad 256$
+		\item[Cols of ATu]
+		$012, \quad 345, \quad 678$
+		\item[Triples with 1 pt from each row and column of $A$Tu]
+		$048, \quad 057, \quad 138, \quad 156, \quad 237, \quad 246$\\
+	\end{description}
+	Let $x,y$ be points. If $x,y$ are in the same row or col they are in a unique block. If not $x,y$ in a unique block of type 3.
+\end{proof}
+
+
+%Guest lecture John Britnell
+\begin{align*}
+	H = Ham(3) \qquad & \qquad H' = H + \ \text{parity check}\\
+	K = \text{reverse of}\; H \qquad & \qquad K' = K + \ \text{parity check}
+\end{align*}
+
+\begin{defn}[The exteded Golay Code $G_24$]\hfill\\
+$G_24$ consists of all vectors in $\ZZb^24$ of the form:
+\begin{align*}
+(a +x, b +x, a + b + x), \qquad&\qquad \text{where} a,b\;\in H\\
+(\xlongleftrightarrow{8}, \xlongleftrightarrow{8}, \xlongleftrightarrow{8}), \qquad&\qquad \text{and}\;x\in L\\
+\end{align*}
+
+\begin{enumerate}
+	\item\hfill\\
+	$0^24\qquad \qquad a = b = x = 0^8$
+	\item\hfill\\
+	$1^24\qquad \qquad a = b = 0^8 \qquad x = 1^8$
+	\item\hfill\\
+	$(0^8, 1^8, 0^8) a =x = 1^8 \qquad b=0^8$
+	\item\hfill\\
+	$(0^8, 0^8, 0^8) a = b =x = 1^8$
+	\item\hfill\\
+	$a = 10001110, b = 10011001, x = 01001011$
+\end{enumerate}
+\end{defn}
+
+\begin{prop}
+$G_24$ is a linear code of dimension 12.
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+		\item[Linear]\hfill\\
+			$0^24 \in G_24$
+
+		\item[Closure]\hfill\\
+			Suppose $a_1, a_2, b_1, b_2 \in H\, \qquad x_1, x_2 \in K'$\\
+			Then 
+			\begin{align*}
+				&(a_1 + x_1, b_1 + x_1, a_1 + b_1 + x_1) + (a_2 + x_2, b_2 + x_2, a_2 + b_2 + x_2) =\\
+					&= (a_1 + a_2 + x_1 + x_2, b_1 + b_2 + x_1, + x_2, a_1 + a_2 + b_1 + b_2+ x_1 + x_2) \in G_24\\
+					&\text{Since:} \qquad a_1, a_2, b_1, b_2 \in H\, \qquad x_1, x_2 \in K'
+			\end{align*}
+		\item[Dimension]\hfill\\
+		Suppose: $a_1 + x_1, b_1 + x_1, a_1 + b_1 + x_1) = (a_2 + x_2, b_2 + x_2, a_2 + b_2 + x_2)$\\
+		Then:\\
+		\begin{align*}
+			a_1 + x_1 &= a_2 + x_2\\
+			b_1 + x_1 &= b_2 + x_2\\
+			a_1 + b_1 + x_1 &= a_2 + b_2 + x_2\\
+		\end{align*}
+			Adding $x_1 = x_2$, we get $a-1 = a2$ and $b_1 = b_2$\\
+			So distinct choices of $(a,b,x)$ give distinct elements of $G_24$.\\
+			\begin{align*}
+				\text{So:} \quad |G_24| &= \text{number of triples}\qquad (a,b,x) \qquad \qquad a,b \in H' \quad x\in K'\\
+				&= |H'|^2  |K'| = 2^4 \times 2^4 \times 2^4 = 2^12
+			\end{align*}
+			So $dim G_24 = 12$\\
+		\item[Basis]\hfill \\
+			Note that $(a+x, b+x, a+b+x) = (a,0,a) + (0,b,b) + (x,x,x)$ (all of these in $G_24$\\
+			So if $a_i, b_i, x_i \quad (1\leq i \leq 4)$ are bases for $H', H', K'$ respectively, then:\\
+			$(a,0,a) , (0,b,b) , (x,x,x) \qquad (1\leq i \leq 4)$ is a basis for $G_24$
+	\end{enumerate}
+\end{proof}
+\begin{thm}
+	$G_24$ has minimum distance 8\\
+\end{thm}[1.15]
+\begin{proof}
+	Needs multiple steps. \\
+	For $v,w \in \ZZb^n$ define $[v,w] = \text{number of places where $v$ and $w$ are both 1}$\\
+\end{proof}
+\begin{prop}[1.16]\hfill\\
+	Let $v,w \in \ZZb^n$\\
+	\begin{enumerate}
+		\item $wt(w) = wt(v) + wt(w) = 2[v,w]$\\
+		\item If 4 divides $wt(w)$ and $wt(w)$ then 4 divides $wt(v+w)$ iff $[v,w]$ is even\\
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Let $r = wt(v),\quad s = wt(w),\quad t = [v,w]$\\
+	Reordering coordinates as necessary, we can write:\\
+	\[
+		\begin{matrix}
+			& \xlongleftrightarrow{t} & \xlongleftrightarrow{r-t} & \xlongleftrightarrow{s-t}\\
+		v  =& 1 ... 1  				  &1 ... 1 					  &0 ...0		    & 0 ... \\
+		w  =& 1 ... 1  				  &0 ... 0 					  &1 ...1		    & 0 ... \\
+		w+w=& 0 ... 0  				  &1 ... 1 					  &1 ...1		    & 0 ... \\
+		\end{matrix}
+	\]
+	Therefore let $wt(v+w) = (r-t) + (s-t) = r +s - 2t$\\
+	2) follows immediately from 1.
+\end{proof}
+
+\begin{prop}\hfill\\
+	If $a,b,x \in \ZZb^n$ then $[a,x] + [b,x] + [a+b,x]$ is even.\\
+\end{prop}
+\begin{proof}
+	Let $r = [a,x],\qquad s = [b,x]$ and let $n$ be the number of places where $a,b,x$ all have 1.\\
+	Reordering coordinates we can write
+		\[
+			\begin{matrix}
+				& \xlongleftrightarrow{n} & \xlongleftrightarrow{r-n} & \xlongleftrightarrow{s-n}\\
+			x  =& 1 ... 1  				  &1 ... 1 					  &1 ...1			&1 ...1		    & 0 ...  \\
+			a  =& 1 ... 1  				  &1 ... 1 					  &0 ...0			&1 ...1		    & *  \\
+			b  =& 1 ... 1  				  &0 ... 0 					  &1 ...1			&1 ...1		    & *  \\
+			a+b=& 0 ... 0  				  &1 ... 1 					  &1 ...1			&0 ...0		    & *  \\
+			\end{matrix}
+		\]
+		We have $[a+b, x] = (r-n) + (s-n) = (r+s-2n)$\\
+		So: $[a,x] + [b,x] + [a+b,x] = r+s + (r+s-2n) = 2(r+s-n)$ which is even
+\end{proof}
+
+\begin{prop}[1.18]\hfill
+If $c \in G_24$ then 4 divides $wt(c)$.
+\end{prop}
+
+\begin{proof}\hfill\\
+	We have $c = (a+x, b+x, a+b+x)\qquad a,b \ in H', x\in K'$\\
+	So: 
+	\[c \underset{v}{(a,b, a+b)} \underset{+}{+} \underset{w}{(x,x,x)}\]
+	Since $a,b \in H'$ and $x\in K'$ we know 5 divides $wt(a), wt(b), wt(x)$.
+	So 4 divides $wt(v), wt(w)$\\
+	And $[v,w] = [a,x] + [b,x] + [a+b, x]$ which is even (prop 1.17)\\
+	So $wt(v+w)$ is divisible by 4 by proposition 1.16 (2)\end{proof}
 
 
 
