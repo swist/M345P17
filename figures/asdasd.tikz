@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=new] (0) at (-2.75, -1.25) {0};
+		\node [style=new] (1) at (2.5, -1.25) {a_1};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=dotted] (0) to (1);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,22 @@
+%!tikz editor 1.0
+\documentclass{article}
+\usepackage{tikz}
+\usepackage[graphics, active, tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+%!tikz preamble begin
+
+%!tikz preamble end
+
+
+\begin{document}
+%!tikz source begin
+\begin{tikzpicture}
+\foreach \pos/\name in {
+	{(0,1)/a}, {(0,0)/b}, {(0,-1)/c},
+    {(1,0)/0}, {(2,0)/infty}, {(3,-1)/z}, {(3,0)/y},{(3,1)/x}}
+\node[vertex] (\name) at \pos {$\name$};
+\end{tikzpicture}
+%!tikz source end
+
+\end{document}

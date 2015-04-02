@@ -1,0 +1,18 @@
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{cutwin}
+\usetikzlibrary{arrows}
+\usetikzlibrary{graphs}
+\usetikzlibrary{graphs.standard}
+\usetikzlibrary{decorations.markings}
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfsetlayers{edgelayer,nodelayer,main}
+
+\tikzstyle{none}=[inner sep=0pt]
+
+
+\newlength{\imagewidth}
+\newlength{\imagescale}

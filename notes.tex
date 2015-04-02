@@ -1277,8 +1277,8 @@
 
 		We will have to use the following result from the theory of designs:
 		\begin{prop}[1.22]\hfill
-			Let $X$ be a set of $v$ poitns and $\curlyB$ a $t$-design with blocks of size $k$, on which any $t$ points lie in $r_t$ blocks.\\
-			Then $\curlyB$ is also a $(t-1)$-design and:
+			Let $X$ be a set of $v$ poitns and $\CB$ a $t$-design with blocks of size $k$, on which any $t$ points lie in $r_t$ blocks.\\
+			Then $\CB$ is also a $(t-1)$-design and:
 			\[
 				r_{t+1} = \left(\frac{v-t+1}{k-t+1}\right) r_t
 			\]
@@ -2388,7 +2388,7 @@
 
 		\paragraph{Eigenvalues} Let $v$ is the number of vertices. Adjacency matrix of a graph $\Gamma$ is real and symmetric, so it has real eigenvalues and is diagonalizable, i.e.:
 		\[
-			\exists P \quad\text{s.t.}\quad 
+			\exists P \quad\text{s.t.}\quad
 			P^{-1}AP = \begin{pmatrix}
 						\lambda_1 & & 0\\
 						& \ddots & \\
@@ -2528,7 +2528,7 @@
 							v(P) = r+2 \leq v(Q)
 						\]
 						Similarly $v(Q) \leq v(P)$, hence $v(P) = v(Q)$ proving the claim.
-					
+
 					First note that non-joined $P,Q$ exist (by the assumption that $\exists$ a vertex joined to all others). So $v(P) = v(Q)$. Let $R$ be a common neighbour of $P,Q$. If $S$ is a futher vertex it is not joined to both $P, Q$ by the previous claim. Moreover
 					\[ v(S) = v(P) = v(Q)\]
 					Finally by assumption $\exists$ vertex $S$ not joined to $R$, so $v(R) = v(S)$. Therefore $\Gamma$ is regular.
@@ -2592,7 +2592,7 @@
 					\begin{description}
 						\item[$k=2$] $\Gamma$ is a 15-gon, which not strongly regular \underline{contradiction}
 						\item[$k=3$] Balloon:
-							%(1) - (3) - (11) 
+							%(1) - (3) - (11)
 							By balloon equation
 							\begin{align*}
 								3(2-a) = 11b &\Rightarrow 11 | 3(2-a) \\
@@ -2601,7 +2601,7 @@
 							\end{align*}
 							\underline{contradiction}
 						\item[$k=4$] Balloon:
-							%(1) - (4) - (10) 
+							%(1) - (4) - (10)
 							By balloon equation
 							\begin{align*}
 								4(3-a) = 10b &\Rightarrow 10 | 4(3-a) \\
@@ -2610,7 +2610,7 @@
 							\end{align*}
 							\underline{contradiction}
 						\item[$k=3$] Balloon:
-							%(1) - (5) - (9) 
+							%(1) - (5) - (9)
 							By balloon equation
 							\begin{align*}
 								5(4-a) = 9b &\Rightarrow 9 | 4-a \\
@@ -2621,16 +2621,16 @@
 							\[6(5-a) = 8b \Rightarrow a=1, b = 3 \]
 							These are the parameters $(15, 6, 1, 3)$ so, $\Gamma \cong T(6)^C$
 						\item[$k=7$]
-							%(1) - (7) - (7) 
+							%(1) - (7) - (7)
 							Here $7(6-a) = 7b \Rightarrow b = 6 - a$\\
 							Apply Theorem 2.7:
 							The eigenvalues are $7, r_1, r_2$, roots of:
 							\begin{align*}
 								x^2 - (a - b) x - (k -6 ) &= 0\\
-								x^2 - (2a - 6) x - (a + 1) &= 0\\ 
+								x^2 - (2a - 6) x - (a + 1) &= 0\\
 							\end{align*}
 							So $r_1,r_2 =  (a-3)\pm \sqrt(a^2 - 5a + 10)$. Use part 3 of Theorem 2.7. These are integers, since $15 \neq 4b + 1$.
-							$r_1, r_2 \in \ZZ$ hence: $a^2 -5a + 10$ is a square. We know that $0 \leq a \leq 5$. Possible such $a$ are: $2, 3$. 
+							$r_1, r_2 \in \ZZ$ hence: $a^2 -5a + 10$ is a square. We know that $0 \leq a \leq 5$. Possible such $a$ are: $2, 3$.
 							\begin{description}
 								\item[$a= 2$] Then $r_1 = 1, r_2 = -3$, so 2.7(2) gives $m_1 + m_2 = 14$ and $m_1 - 3m_2 = -7$
 								So $4m_2 = 21$, But $m_2 \in \ZZ$\underline{contradiction}
@@ -2662,7 +2662,7 @@
 
 		Let's clear up a point:
 
-		The complete graph $K_n, K_n^C$ do not count as strongly regular graphs. 
+		The complete graph $K_n, K_n^C$ do not count as strongly regular graphs.
 	\subsection{Two-weight codes and strongly regular graphs}
 		\begin{defn}
 			A linear code $C \subseteq \ZZb^n$ is a \underline{two-weight} code if $\exists$ positive integers $w_1, w_2, w_1 \neq w_2$ such that every non zero codeword in $C$ has a weight $w_1$ or $w_2$ and both weights occur.
@@ -2733,16 +2733,16 @@
 			\begin{clm}
 				Each column of $A$ hs weight $2^{k-1}$
 			\end{clm}
-			
+
 			\begin{proof}
 				Define $\phi_i : C \rightarrow \ZZb$ by:
 				\[
-					\phi_i(x_1,\hdots,x_n) = x_i				
+					\phi_i(x_1,\hdots,x_n) = x_i
 				\]
 				$\forall i$ the $i^{th}$ column of $A$ is non zero (as $C$ is projective), so $\phi_i$ is surjective. Therefore $ker\phi_i$ has dimension $k-1$\\
 				Hence the $i^{th}$ column of $A$ has $2^{k-1} - 1$ zeros and the rest of the entries are $2^{k-1}$ ones.\\
 			\end{proof}
-			
+
 			Now we have equations:
 			\begin{align*}
 				b_1 + b_2 &= 2^k-1\\
@@ -2754,7 +2754,7 @@
 				Consider column $j$ of $A$. Let $r_1$ be the number of 0's in col $j$ of $A_1$ and $r_2$ the number if 0's in col $j$ of $A_2$. Codewords in $C$ with 0 in $j^{th}$ position form a subcode of $C$ which is two-weight, with weights $w_1 -1, w_2 -1$. Its generator matrix has no zero column. (we are dropping the $j^{th}$ column however) \\
 				Otherwise $A$ would have another column identical to $j$, but $C$ is assumed to be projective, so it can't have two identical columns.
 
-				Hence we can work out $r_1, r_2$ as for $b_1, b_2$. $r_1, r_2$ are independent of the choice of column $j$. So every column of $A_i$ has $r_i$ 0's. 
+				Hence we can work out $r_1, r_2$ as for $b_1, b_2$. $r_1, r_2$ are independent of the choice of column $j$. So every column of $A_i$ has $r_i$ 0's.
 
 			\paragraph*{Bring back the graph}
 				Let us label the rows of $A_1$ as $a_1, \hdots, a_{b_1}$. (recall $b_1 + b_2 = k$ and $b_1$ is number of rows in $A_1$) We can calculate:
@@ -2877,21 +2877,21 @@
 				\lambda(v-1) + r = k(k-1) + k = k^2
 			\]
 
-			Hence 
+			Hence
 			\[
 				det(A)^2 = (k - \lambda)^{v-1}k^2
 			\]
 			Both sides are squares in $\ZZ$, hence $(k-\lambda)^{v-1}$ is a square. As $v$ is even, $v-1$ is odd, so $k-\lambda$ is a square.
 		\end{proof}
-					
+
 		\begin{rem}
 			If $v$ is odd, the \underline{Bruch-Ryser-Charla} theorem says: if a symmetric 2-design exists with parameters $(v, k, \lambda)$ then the equation:
 			\[
 				z^2 = (k-\lambda)x^2 + (-1)^{\frac{v-1}{2}}\lambda y^2
 			\]
 			has a solution with $x,y,z \in \ZZ$ (not all $x,y,z = 0$)
-		\end{rem}					
-		
+		\end{rem}
+
 		\begin{thm}(3.10)
 			If $\mathcal{B}$ is a symmetric 2-design with parameters $(v,k, \lambda)$, then any 2 blocks of $\mathcal{B}$ intersect in exactly $\lambda$ points.
 		\end{thm}
@@ -2919,11 +2919,11 @@
 			Now $AJ = kJ = JA$ and $AI = IA$ hence A commuts with $A A^T = \lambda J + (r - \lambda) I$. So
 
 			\[AAA^T = A A^T A\]
-			We know that $det(AA^T) = det(A)^2$ = $(k-\lambda)^{v-1}k^2 \neq 0$. So $det(A) \neq 0$. So $A$ is invertible and we can cancel out $A$ on the left in the equality above, so $AA ^T = A^T A$. 
+			We know that $det(AA^T) = det(A)^2$ = $(k-\lambda)^{v-1}k^2 \neq 0$. So $det(A) \neq 0$. So $A$ is invertible and we can cancel out $A$ on the left in the equality above, so $AA ^T = A^T A$.
 		\end{proof}
 
 		\paragraph*{Projective planes}
-			A symmetric 2-design with $\lambda = 1$ is called a projective plane. By 3.10 any two blocks will meet in 1 point. 
+			A symmetric 2-design with $\lambda = 1$ is called a projective plane. By 3.10 any two blocks will meet in 1 point.
 
 			\begin{defn}(Equivalent definition of a projective plane)\hfill\\
 				A set of points and lines (lines are the blocks, or subsets of points) satisfying 3 axioms:
@@ -2942,7 +2942,7 @@
 				There is a converse to theorem 3.9 - namely, if there exists a 2-design with $(v, k, \lambda)$ in which any 2 blocks intersect in $\lambda $ points, then it is automatically symmetric.
 			\end{rem}
 
-	\subsection{Examples of symmetric 2-designs}\hfill\\		
+	\subsection{Examples of symmetric 2-designs}\hfill\\
 		\subsection*{Difference sets}
 			\begin{exmp}
 				Let $X = \ZZ_7 = \{0, 1, \hfill, 6\}$ and let $B_0 = {0, 1, 3} \subset X$\\
@@ -2972,7 +2972,7 @@
 				Suppose $B_0$ is a $\lambda$-difference set in $\ZZ_v$. For $i \in \ZZ_v$ Define:
 				\[
 					B_0 + i = \{b+i \ :\ b \in B_0\}
-				\]	
+				\]
 				Let $k = |B_0|$. Then the subsets $B_i + i$ are the blocks of a symmetric 2-design with parameters $(v, k, \lambda)$
 			\end{prop}
 
@@ -2992,7 +2992,7 @@
 				$v = 11, B_0 = \{1,4,9,5,3\}$. By proposition below $B_0$ is a 2-difference set, and therefore we get a symmetric 2-design with parameters $(11,5,2)$
 			\end{exmp}
 
-			\begin{exmp} 
+			\begin{exmp}
 				$v= 13,\ B_0 = \{0,1,3,9\}$. Check that this is a 1-differnce set. And we get a symmetric 2-design with parameters $(13,4,1)$ so this is a projective plane!
 			\end{exmp}
 
@@ -3000,7 +3000,7 @@
 				Let $p$ be prime and define:
 				\[
 					Q = \{x^2\ :\ x\in \ZZ_p \setminus 0\}
-				\]					
+				\]
 				Recall that $Q$ is a subgroup of the $C_p^*$ of order $\frac{p-1}{2}$\\
 
 				\begin{prop}
@@ -3173,4 +3173,283 @@
 			\begin{rem}
 				$\text{PG}(2, \FF)$ is a symmetric 2-design parameters $(q^2 + q + 1, q + 1, 1)$
 			\end{rem}
+
+			\paragraph*{Digression - isomorphism of designs}\hfill \\
+				\begin{defn}
+					Let $(X_1, \CB_1)$ and $(X_2, \CB_2)$ be designs (point sets $X_1, X_2$, block sets $\CB_1, \CB_2$). Say a map $\phi: X_1 \to X_2$ is an isomorphism of designs if:
+					\begin{itemize}
+						\item $\phi$ is a bijection
+						\item $\phi$ sends blocks in $\CB_1$ to blocks in $\CB_2$ bijectively.
+					\end{itemize}
+					If there exists such an isomorphism we say $(X_1, \CB_1) \cong (X_2, \CB_2)$.
+
+					Isomorphic designs have the same parameters, but no converse.
+				\end{defn}
+
+				\begin{exmp}
+					\begin{align*}
+						X_1 &= \ZZ_7, \quad \CB_1 =\ \text{2-design with blocks $B_0 + i$}\\
+						  & (B_0 = \{0,1,3\}):\ \text{parameters $(7,3,1)$}\\
+						  &\\
+						X_2 &= \ZZ_2^3\setminus 0 \quad \CB_2 =\ \text{blocks}\ \{x, y, x+y\}\\
+							&\text{also a 2-design, parameters $(7,3,1)$}
+					\end{align*}
+				\end{exmp}
+				\begin{quest}
+					Is $\CB_1 \cong \CB_2$ ?
+				\end{quest}
+				\paragraph*{Answer:} Try to construct an isomorphism:
+				\begin{align*}
+						\CB_1 & \qquad &\CB_2 \\
+						0 1 3 & \qquad\longrightarrow\qquad   & 100,\ 010,\ 110\\
+						1 2 4 & \qquad\longrightarrow\qquad   & 010,\ 001,\ 011\\
+						2 3 5 & \qquad\longrightarrow\qquad   & 001,\ 110,\ 111\\
+						3 4 6 & \qquad\longrightarrow\qquad   & 110,\ 011,\ 101\\
+						4 5 0 & \qquad\longrightarrow\qquad   & 011,\ 111,\ 100\\
+						5 6 1 & \qquad\longrightarrow\qquad   & 111,\ 101,\ 010\\
+						6 0 2 & \qquad\longrightarrow\qquad   & 101,\ 100,\ 001\\
+				\end{align*}
+				So yes, they are isomorphic. There are lots of isomorphism uniquely determined by where we send 0, 1, 2 (equivalently, what we send to $x, y, z$):
+				\begin{align*}
+					0 & \longrightarrow & x \qquad (\text{any}\ x \in \ZZ_2^3\setminus 0)\\
+					1 & \longrightarrow & y \qquad (\text{any}\ y \neq x)\\
+					2 & \longrightarrow & z \qquad (\text{any}\ z\neq x,y, x+y)\\
+				\end{align*}
+				The number of such isomorphisms is $7 \times 6 \times 4 = 168$
+
+				\begin{rem}
+					The set of isomorphisms $\CB \to \CB$ forms a group, the automorphism group $Aut(\CB)$
+				\end{rem}
+		\subsection*{Higher-dimensional geometry}
+			$\FF$ a finite field, $|\FF| = q$. Define:
+			\[
+				\FF^n = \{(x_1, \hdots, x_n): x_i \in \FF\}
+			\]
+			This is an n-dimensional vector space over $\FF$ and has $q^n$ vectors.
+
+			\begin{defn}
+				Let $1 \leq m \leq n-1$. Define the \emph{\underline{$q$-binomial coefficient}}:
+				\[
+					\binom{n}{m}_q = \frac{(q^n-1)(q^{n-1} - 1)\hdots (q^{n-m + 1} -1)}{(q^m-1)(q^{m-1} - 1)\hdots (q -1)}
+				\]
+			\end{defn}
+			\paragraph*{Note:} This is a polynomial in $q$ and if $q = 1$ it gives $\binom{n}{m}$, i.e. $\binom{n}{m}_1 = \binom{n}{m} $
+
+			\begin{exmps}
+				\begin{align*}
+					\binom{n}{1}_q &= \frac{q^n -1}{q-1}\\
+					\binom{4}{2}_2 &= \frac{(2^4 - 1)(2^3 - 1)}{(2^2-1)(2-1)} = 35
+				\end{align*}
+			\end{exmps}
+
+			\begin{prop}[3.17]\hfill\\
+				\begin{enumerate}
+					\item The number of $m$-dimensional subspaces in $\FF^n$ is $\binom{n}{m}_q$
+					\item For a fixed vector $\mathbf{v} \in \FF^n\setminus 0$, the number of $m$-dimensional subspaces of $\FF^n$ containing $\mathbf{v}$ is given by:
+					\[
+						\binom{n-1}{m-1}_q \quad \text{if $m>1$}\\
+					\]
+					And 1 otherwise.
+
+					\item For linearly independent vectors $\mathbf{v,w} \in \FF^n$ the number of $m$-dimensional subspaces containing $\mathbf{v,w}$ (assuming $m\geq 2$) is:
+					\[
+						\binom{n-2}{m-2}_q
+					\]
+				\end{enumerate}
+			\end{prop}
+			\begin{proof}
+				Later
+			\end{proof}
+
+			\paragraph*{Designs:} Let $n \geq 2$ and $1 \leq m \leq n-1$. Define:
+				\\
+				points \quad = \quad vectors in $\FF^n$\\
+				blocks \quad = \quad subsets of the form $v + W$ where $v$ is a vector and $W$ is a m-dimensional subspace
+
+			\begin{exmp}
+				$n = 2, m = 1$\\
+				Blocks are $v + span(w) =$ lines in $\FF^2$. Above design is $\text{AG}(2,\FF)$
+			\end{exmp}
+
+			\begin{prop}[3.18]\hfill\\
+				\begin{enumerate}
+					\item This is a 2-design parameters $(q^n, q^m, \lambda)$
+						\[
+							\lambda =
+								  \begin{cases}
+								   \binom{n-1}{m-1}_q & \text{if } m > 1 \\
+								   1       & \text{if } m = 0
+								  \end{cases}
+						\]
+					\item It is a 3-design if $\FF = \ZZb$ and $m \geq 2$ with parameters $(2^n, 2^m, r_3)$ where:
+					\[
+						r_3 = 	\begin{cases}
+								   \binom{n-2}{m-2}_q & \text{if } m > 2 \\
+								   1       & \text{if } m = 2
+								\end{cases}
+					\]
+				\end{enumerate}
+			\end{prop}
+
+			\begin{defn}
+				Denote this design by $\text{AG}(n, \FF)_m$
+			\end{defn}
+
+			\begin{proof}(3.18)\hfill
+				\begin{enumerate}
+					\item First observe that all blocks $v + W$ have the same size, namely $q^m = |W|$.\\
+						Now pick $v_1, v_2 \ in \FF^n, v_1 \neq v_2$. \\
+						Any block containing $v_1$ is of the form $v_1 + W$ and
+						\[
+							v_1, v_2 \in v_1 + W \iff v_2 - v_1 \in
+						\]
+						So the number of blocks containing $v_1, v_2$ is the number of $m$-dimensional subspaces of $W$ containing $v_2 - v_1$.
+						By the previous proposition (3.17) this number is $\lambda$
+
+					\item Suppose $\FF = \ZZb$. Pick $v_1, v_2, v_3$ be distinct vectors in $\FF^n = \ZZb^n$. \\
+					Then any block containing $v_1$ is of the form $v_1 + W$ and:
+					\begin{align*}
+						v_1, v_2, v_3 \in v_1 + W &\iff v_2, v_3 \in W\\
+												  &\iff v_2 - v_1, v_3 - v_1 \in W
+					\end{align*}
+					Since $\FF = \ZZ_2$, $v_2 - v_1, v_3-v_1$ are linearly independent. So the number of blocks is containing $v_1, v_2, v_3$ is equal to the number of $m$-dimensional subspaces of $W$ containing two fixed linearly independent vectors which is exactly $r_3$ by (3.17).
+				\end{enumerate}
+			\end{proof}
+
+			\begin{exmps}\hfill
+				\begin{enumerate}
+					\item $\text{AG}(3, \ZZ_3)_1:$ 2-design, parameters $(27, 3, 1)$
+					\item $\text{AG}(3, \ZZ_3)_2:$ 2-design, parameters $(27,3, 4)$
+					\item $\text{AG}(3, \ZZ_2)_2:$ 3-design, parameters $(8, 4, 1)$ - [weight(4) codewords in the extended Hamming code $H'$ give a 3-design isomorphic to this one]
+				\end{enumerate}
+			\end{exmps}
+
+
+			\begin{proof}(3.17)
+				\begin{enumerate}
+					\item Let $S(m)$ be the number of $m$-dimensional subspaces. To calculate $S(m)$ we count the pairs:
+
+					\[
+						\left( (w_1, \hdots, w_m), W\right)
+					\]
+					consisting of \underline{ordered} $m$-tuples of linearly independent vectors in $V= \FF^n$ and $W$ is the $m$-dimensional vector space spanned by $(w_1, \hdots, w_n)$
+					\\
+					On the one hand, the number of such pairs is
+					\[
+						\text{number of $m$-tuples $(w_1, \hdots, w_n)$} \times 1
+					\]
+					To count them we use:
+					\begin{align*}
+						\text{no of choices $w_1$} &= q^n - 1\quad \text{number of non zero vectors in V} \\
+						\text{no of choices $w_2$} &= q^n - q \quad \text{any $w_2$ not in $span(w_1)$}\\
+						\text{no of choices $w_3$} &= q^n - q^2 \quad \text{any $w_2$ not in $span(w_1, w_2)$}\\
+						\text{no of choices $w_i$} &= q^n - q^{i-1} \\
+						\text{no of choices $w_n$} &= q^n - q^{m-1} \\
+					\end{align*}
+
+					So the number of pairs is the product of all of these numbers:
+						\[
+							(q^n -1)(q^n -q) \hdots (q^n - q^{m-1})
+						\]
+
+					On the other hand, the number of such pairs is the number of $W \subset V$ times the number of $m$-tuples in a given $W$:
+
+					\[
+						\text{number of $W$'s} \times \text{number of $m$-tuples in each $W$}
+					\]
+					To count the $m$-tuples $w_1, \hdots, w_m \in W$, $W$ fixed we proceed as above.
+					\[
+						(q^m -1)(q^m - q)\hdots (q^m - q^{m-1})
+					\]
+
+					So
+					\begin{align*}
+						\text{no. of pairs} &= S(m) \times (q^m -1)(q^m - q)\hdots (q^m - q^{m-1})\\
+											&= (q^n -1)(q^n -q) \hdots (q^n - q^{m-1})\\
+					\end{align*}
+					Therefore:
+					\begin{align*}
+						S(m) &= \frac{(q^n -1)(q^n -q) \hdots (q^n - q^{m-1})}{(q^m -1)(q^m - q)\hdots (q^m - q^{m-1})}\\
+						&= \frac{(q^n -1)(q^{n-1} -1) \hdots (q^{n-m+1} - 1)}{(q^m -1)(q^{m-1} - 1)\hdots (q -1)}\\
+						&= \binom{m}{n}_q
+					\end{align*}
+
+					\item Fix a non zero vector $v \in V = \FF^n$. Want to count the number of $m$-dimensional subspaces containing $v$. Extend to a basis $v, v_2, \hdots, v_n$ of $V$ and define:
+					\[
+						V_0 = span(v_2, \hdots, v_n)
+					\]
+					\begin{clm}
+						If $W$ is an $m$-dimensional subspace of $V$, containing $v$, then:
+						\[
+							W = span(v) + W_0
+						\]
+						Where $W_0 \subseteq V_0$ and $dim(W) = m-1$
+					\end{clm}
+					Indeed $W_0 = W \cap V_0$
+					\begin{proof}Observe that $W \nsubseteq V_0$, so $W \cap V_0$ has dimension $m-1$ and then $W = span(v) + W_0$
+					\end{proof}
+
+					Hence the number of $m$-dimensional spaces containing $v$ is the number of choices for $W_0 \subset V_0$, i.e. the number of $m$-dimensional subspaces of $V_0$ which by part 1 is:
+					\[
+						\binom{n-1}{m-1}_q
+					\] if $m > 1$ and 1 otherwise.
+
+					\item The argument is the same as above, but we are working with $W_0$ $m-2$-dimensional and we take the span of two arbitrary vectors in $V$
+				\end{enumerate}
+			\end{proof}
+
+
+	\paragraph*{Sheet 4 Q5}
+		\begin{enumerate}[(a)]
+			\item 
+				We have a graph with parameters $(v, 4a, a, 2a)$. 
+				Use the balloon equation
+				
+				\[
+					4a(3a-1) = v-4a-1 \implies v=  10a - 1
+				\]
+				Check $v = 10a -1 > 8a > 2k$
+				So apply 2.7
+				Eigenvalues $r_1, r_2$ are roots of:
+				\begin{align*}
+					x^2 -(a - 2a) -(4a - 2a) &= 0 \\
+					x^2 +a - 2a &= 0\\
+				\end{align*}
+				So \[ r_1, r_2 = \frac{1}{2}(-a \pm \sqrt{a^2+8a})\]
+				Assume $a > 1$, so params not $(4b+1, 2b, b-1, b)$
+				Then $r_1, r_2 \in \ZZ$ so $n = \sqrt(a^2 + 8a) \in \ZZ$
+				i.e. $a(a+8)$ is a square
+
+				Multiplicities:
+				\begin{align*}
+					m_1 + m_2 &= 1\\
+					2(r_1m_1 + r_2m_2) &= -2k\\
+					\implies (m_1 + m_2)(-a) +(m_1 - m_2)n &= -8a\\
+					\implies (m_1 - m_2)n &= (m_1 + m_2 - 8)a\\
+										  &= (10a - 10)a\\
+										  &= 10a(a - 1)
+				\end{align*}
+				So $(m_1 - m_2)^2a(a+8) = 100a^2(a-1)^2 \implies a+8 | 100a(a-1)^2$
+
+			\item 
+				$hcf(a+8, a) | 8, hcf(a+8, a-1)| 9 \implies a+8 divides 100\times 8 \times 9^2$
+				And since we know that $a(a+8)$ is square, the only possibility is $a =8$
+		\end{enumerate}
+
+	\paragraph*{Sheet 5 Q10}
+		\begin{enumerate}[(a)]
+			\item There are $p+1$ lines through $x \in A$. On each of these lines there's one unique point from $A \setminus {x}$. so $|A| \leq p+2$
+
+			\item 
+				\begin{enumerate}[(i)]
+					\item ovals in $\text{PG}(2, \ZZb)$. Set of 4 points, no 3 collinear. Each oval is a complement of a line. Since there are 7 lines in $\text{PG}(2, \ZZ_p)$ there are $7$ ovals.
+					\item $A$ is an oval, $L$ a line, $L \cup A = \text{PG}(2, \ZZ_p)$. Show that $|A \cap L| = 0 \vee 2$. By proof of $(a)$, $A$ contains exactly one point (apart from $x$) on every line through $x$.
+					So there's only one extra point on $L$ in $A$. So if the intersection non empty, $|A \cap L| = 0 \vee 2$
+					\item Assume $p > 2$ $p$ prime.
+					Suppose we have an oval in $A$ and pick $y \notin A$. $y$ has $p+1$ lines through it. Every line through $y$ meets $A$ in 0 or 2 points, each pair of points a disjoint from the other pairs, as lines only contain two points. Therefore $|A|$ is even. but $|A| = p + 2$ odd. Contradiction.
+
+				\end{enumerate}
+		\end{enumerate}
+
+
 \end{document}
